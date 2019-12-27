@@ -1,0 +1,45 @@
+
+.footer-container {
+    position: relative;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    &:before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 1;
+        border: 1px dashed rgba($black, .3);
+        top: 0;
+        left: 0;
+    }
+}
+.links-info {
+    a {
+        display: inline-block;
+        font-size: 14px;
+        font-weight: 300;
+        margin-right: 25px;
+        vertical-align: middle;
+        &:last-of-type {
+            margin-right: 0;
+        }
+    }
+}
+.links-social {
+    text-align: right;
+    span, a {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    span {
+        margin-right: 15px;
+        font-weight: 300;
+    }
+    a {
+        font-size: 25px;
+        margin-right: 15px;
+        &:last-of-type {
+            margin-right: 0;
+        }
+    }
+}

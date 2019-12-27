@@ -1,0 +1,119 @@
+// =================== Tags ===================
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    font-family: 'Lato', sans-serif;
+    color: $black;
+}
+ul, ol {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+button {
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    &:disabled {
+        cursor: default;
+        pointer-events: none;
+    }
+}
+p {
+    font-weight: 300;
+    margin-bottom: 15px;
+}
+img {
+    max-width: 100%;
+}
+// =================== Class ===================
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+// Color
+.color-white {
+    color: white;
+}
+
+// Text
+.u-bold {
+    font-weight: bold;
+}
+
+// Font
+.font-20 {
+    font-size: 20px;
+}
+
+// link-with-icon
+.link-with-icon {
+    display: inline-block;
+    font-weight: 300;
+    font-size: 14px;
+    text-decoration: underline;
+    i {
+        display: inline-block;
+        margin-right: 8px;
+    }
+    
+}
+
+// Displays
+.d-flex {
+    display: flex;
+}
+
+// Buttons
+.btn {
+    display: inline-block;
+    padding: 10px 25px 12px 25px;
+    color: white;
+    border: 1px solid white;
+    text-transform: capitalize;
+    transition: .2s linear;
+
+    &:hover {
+        background-color: white;
+        color: $black;
+    }
+
+    &--two {
+        border: 1px solid $black;
+        color: $black;
+    }
+
+    // responisve
+    @media ( max-width: 480px ) {
+        padding: 12px 30px 15px 30px;
+    }
+}
+
+.slide-up {
+    overflow: hidden;
+    animation: slideUp .3s linear forwards;
+}
+
+// =================== Animations ===================
+@keyframes showMenuMobile {
+    to {
+        transform: translateX(0);
+    }
+}
+@keyframes slideUp {
+    80% {
+        padding: 0;
+    }
+    100% {
+        padding: 0;
+        height: 0;
+    }
+}

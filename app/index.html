@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test | Zemoga Inc</title>
+
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/public/flexboxgrid.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link rel="stylesheet" href="css/public/main.css">
+</head>
+<body>
+    <div class="main">
+        <header class="header-main" id="header-main">
+            <div class="container">
+                <div class="row middle-xs">
+                    <div class="col-sm-4 col-xs-12">
+                        <h1 class="color-white title-main">Rule of Thumb.</h1>
+                    </div><!-- / col-->
+                    <div class="col-sm-8">
+                        <nav class="nav-main" id="nav-main">
+                                    <ul>
+                                        <li>
+                                            <a href="#">Past Trials</a>
+                                        </li><!-- /Li -->
+                                        <li>
+                                            <a href="#">How it works</a>
+                                        </li><!-- /Li -->
+                                        <li>
+                                            <a href="#">Login / Sing Up</a>
+                                        </li><!-- /Li -->
+                                    </ul>
+                                    <button class="search-main">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                        </nav><!-- nav -->
+                        <button class="btn-mobile" id="btn-mobile">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                        </button>
+                    </div><!-- /col -->
+                </div><!-- row -->
+            </div><!-- /container -->
+        </header><!-- /Header -->
+
+        <section class="banner-main">
+            <div class="container">
+                <div class="col-md-6 col-sm-8">
+                    <div class="card-banner">
+                        <div class="card-banner_cont">
+                            <h2 class="color-white card-banner_title">
+                                <span>What's your opinion on</span> Pope francis?
+                            </h2>
+                            <p class="color-white">He’s talking tough on clergy sexual abuse, but is he just another papal pervert protector? (thumbs down) or a true pedophile punishing pontiff? (thumbs up)</p>
+                            <p><a href="#" class="color-white link-with-icon"><i class="fab fa-wikipedia-w"></i>More information</a></p>
+                            <p class="u-bold color-white font-20">What's Your Verdict?</p>
+                        </div><!-- /card-banner_cont -->
+                        <div class="buttons-action">
+                            <button class="btn-like">
+                                <i class="fas fa-thumbs-up"></i>
+                            </button>
+                            <button class="btn-dislike">
+                                    <i class="fas fa-thumbs-down"></i>
+                            </button>
+                        </div>
+                    </div><!-- /card-banner -->
+                </div><!-- /col -->
+            </div>
+            <div class="banner-main_btm">
+                <div class="d-flex">
+                    <div class="col-xs-4 col-left">
+                        <p class="color-white">Closing in</p>
+                    </div><!-- /col -->
+                    <div class="col-xs-8 col-right">
+                        <p class="color-white"><strong>22</strong> days</p>
+                    </div><!-- /col -->
+                </div><!-- /row -->
+            </div>
+        </section><!-- /Banner-main -->
+
+        <div class="container">
+            <div class="banner-info" id="banner-info">
+                    <div class="row middle-xs">
+                        <div class="col-md-3">
+                            <h2 class="banner-info_title">
+                                <span>Speak out Be heard</span> Be Counted
+                            </h2>
+                        </div><!-- /col -->
+                        <div class="col-md-9">
+                            <p>Rule of Thumb is a crowd sourced court of public opinion where anyone and everyone can speak out and speak freely. It’s easy: You share your opinion, we analyze and put the data in a public report.</p>
+                        </div><!-- /col -->
+                    </div><!-- /row -->
+                    <button class="banner-info_btn" id="button-info"><i class="fas fa-times"></i></button>
+            </div><!-- /Banner-info -->
+        </div><!-- / container-->
+
+        <section class="section-main" id="app">
+            <div class="container">
+                <h2 class="title-section">Previous Riling</h2>
+
+                <div class="row center-xs">
+                    <div class="col-xs-11 col-sm-6" v-for="candidate in candidates">
+                        <div class="card">
+                            <img :src="candidate.img" alt="">
+                            <div class="card_cont">
+                                <span class="button-like">
+                                    <i class="fas fa-thumbs-up"></i>
+                                </span>
+                                <h3>{{ candidate.name }}</h3>
+                                <p>{{ candidate.desc }}</p>
+                                <div class="card_actions">
+                                    <button class="button-like" v-on:click="voteLike($event)">
+                                        <i class="fas fa-thumbs-up"></i>
+                                    </button>
+                                    <button class="button-dislike" v-on:click="voteDislike($event)">
+                                        <i class="fas fa-thumbs-down"></i>
+                                    </button>
+                                    <button class="btn" :data-id="candidate.id" v-on:click="vote($event)" :disabled="!like && !dislike">Vote now</button>
+                                    <!-- <span><strong>1 month ago</strong> in Entertainment</span> -->
+                                </div><!-- card_actions-->
+                                <div class="progress-vote">
+                                    <div class="bar-like" v-if="candidate.percentDislike < 100" v-bind:style="{ width: (candidate.percentLike > 0 ? candidate.percentLike : 50) + '%'}">
+                                        <span><i class="fas fa-thumbs-up"></i> {{ candidate.percentLike }}%</span>
+                                    </div><!-- /Bar-like -->
+                                    <div class="bar-dislike" v-if="candidate.percentLike < 100" v-bind:style="{ width: (candidate.percentDislike > 0 ? candidate.percentDislike : 50) + '%'}">
+                                        <span>{{ candidate.percentDislike }}% <i class="fas fa-thumbs-down"></i></span>
+                                    </div>
+                                </div><!-- /progress-vote -->
+                            </div><!-- /card_cont -->
+                        </div><!-- /card -->
+                    </div><!-- /col -->
+                </div><!-- /row -->
+            </div><!-- /container -->
+        </section>
+
+        <div class="container">
+            <div class="banner-info-btm">
+                <div class="banner-info-btm_cont d-flex middle-xs between-xs">
+                    <p>Is there anyone else you would want us to add?</p>
+                    <a href="#" class="btn btn--two">Submit a name</a>
+                </div>                
+            </div>
+        </div><!-- /container -->
+
+        <footer>
+            <div class="container footer-container">
+                <div class="row">
+                    <div class="col-xs-5 col-sm-7 links-info">
+                        <a href="#">Terms and Conditions</a>
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Contact Us</a>
+                    </div><!--- /col -->
+                    <div class="col-xs-7 col-sm-5 links-social">
+                        <span>Follow Us</span>
+                        <a href="#"><i class="fab fa-facebook-square"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div><!--- /col -->
+                </div><!-- /row -->
+            </div><!-- /container -->
+        </footer>
+    </div><!--- Main -->
+
+    <!-- /Script -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/src/main.js"></script>
+
+</body>
+</html>
